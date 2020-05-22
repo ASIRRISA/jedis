@@ -15,16 +15,20 @@ def templojedis():
 def templojedi(jedi_nombre):#aqui en singular
     
     for jedi in jedis:
+
         if jedi['nombre'] == jedi_nombre.lower():
             jedisFound=jedi
         #me devuelve un diccionario
     if (len(jedisFound) > 0):
+
         return jsonify({'jedi': jedisFound})
+
     return jsonify({'Holomensaje': 'Jedi no registrado en los archivos del templo'})
 
 #Create Data Routes
 @app.route('/jedis', methods=['POST'])
 def Consejojedi():
+
     nuevo_jedi = {
         'nombre': request.json['nombre'],
         'raza': request.json['raza'],
@@ -39,6 +43,7 @@ def Consejojedi():
 def entrenarpadawan(jedi_nombre):
     
     jedisFound = [jedi for jedi in jedis if jedi['nombre'] == jedi_nombre]
+
     if (len(jedisFound) > 0):
         jedisFound[0]['nombre'] = request.json['nombre']
         jedisFound[0]['raza'] = request.json['raza']
@@ -55,7 +60,9 @@ def entrenarpadawan(jedi_nombre):
 def Orden66(jedi_nombre):
 
     jedisFound = [jedi for jedi in jedis if jedi['nombre'] == jedi_nombre]
+
     if len(jedisFound) > 0:
+        
         jedis.remove(jedisFound[0])
         return jsonify({
             'Ejecute la orden 66': 'Jedi eliminado',
