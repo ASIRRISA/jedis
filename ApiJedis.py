@@ -5,10 +5,6 @@ app = Flask(__name__)
 from jedis import jedis # importa el diccionario  para luego leer, añadir, modificar, borrar
 #ten en cuenta que el diccionario esta en otro fichero aparte sino lo importara, 
 #no podria tener acceso a el
-@app.route("/")
-def saludo():
-    print("Bienvenido a mi API REST de Jedis, para Fikis de Star Wars, ¡Que la fuerza te acompañe! )
-
 
 @app.route('/jedis', methods=['GET'])#se puede obviar GET por qu es  el metodo por defecto
 def templojedis():
